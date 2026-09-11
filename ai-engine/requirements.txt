@@ -1,0 +1,21 @@
+fastapi
+uvicorn[standard]
+pydantic
+httpx
+
+# ── Image handling ──────────────────────────────────────────────────────────
+numpy
+Pillow
+opencv-python-headless   # headless: no GUI deps, safe for Docker
+
+# ── OCR ─────────────────────────────────────────────────────────────────────
+paddlepaddle             # CPU build; use paddlepaddle-gpu on CUDA hosts
+paddleocr
+
+# ── Face verification ────────────────────────────────────────────────────────
+insightface
+onnxruntime              # CPU inference; use onnxruntime-gpu on CUDA hosts
+
+# ── Tampering detection CNN ──────────────────────────────────────────────────
+torch
+torchvision
