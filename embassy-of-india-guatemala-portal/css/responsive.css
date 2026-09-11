@@ -1,0 +1,206 @@
+/* ==========================================================================
+   MHA SIH 2.0 - Responsive Layout Breakpoints & Mobile Adaptations
+   ========================================================================== */
+
+/* Tablet & Smaller Laptops (<= 1024px) */
+@media screen and (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-visual-frame {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .hero-image-wrapper {
+    height: 320px;
+  }
+
+  .vision-glass-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .featured-sih-banner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2.25rem;
+  }
+
+  .news-columns-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Mobile Devices & Small Tablets (<= 768px) */
+@media screen and (max-width: 768px) {
+  /* Utility Bar */
+  .gov-utility-inner {
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-start;
+  }
+  .gov-utility-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Header & Navigation */
+  .nav-links {
+    display: none; /* Controlled by mobile drawer */
+  }
+
+  .btn-hamburger {
+    display: flex;
+  }
+
+  .nav-actions .btn-login span {
+    display: none;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  /* Mobile Drawer */
+  .mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 82%;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border-glass);
+    z-index: 10005;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: -10px 0 30px rgba(15, 23, 42, 0.15);
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-nav-drawer.open {
+    right: 0;
+  }
+
+  .mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-slate-border);
+    padding-bottom: 1rem;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mobile-nav-link {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-primary-navy);
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Hero adjustments */
+  .hero-section {
+    padding: 2rem 0 3rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions button,
+  .hero-actions a {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .floating-glass-pill {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* About categories */
+  .about-cards-col {
+    grid-template-columns: 1fr;
+  }
+
+  /* Services */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* News columns */
+  .news-columns-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Extra Small Phones (<= 480px) */
+@media screen and (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .loader-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .loader-title {
+    font-size: 1.05rem;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+  }
+
+  .featured-title {
+    font-size: 1.5rem;
+  }
+}

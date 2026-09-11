@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Officer Login - Ministry of Home Affairs | SIH 2.0 Portal</title>
+    <meta name="description" content="Official Central Authentication & Single Sign-On Gateway for Ministry of Home Affairs SIH 2.0 Identity Screening & Remote-Sensing Lab." />
+    <meta property="og:title" content="Officer Login - Ministry of Home Affairs | SIH 2.0 Portal" />
+    <meta property="og:description" content="Official Central Authentication & Single Sign-On Gateway for Ministry of Home Affairs SIH 2.0 Identity Screening & Remote-Sensing Lab." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body class="login-page">
+
+    <!-- ====================================================================
+         1. INITIAL SKELETON / EMBLEM LOADER SEQUENCE
+         ==================================================================== -->
+    <div id="login-initial-loader" style="position: fixed; inset: 0; z-index: 99999; background: #0B1329; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease;">
+      <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 24px; padding: 2.5rem 3.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 420px; width: 90%;">
+        <div style="position: relative; width: 72px; height: 72px; margin-bottom: 1.25rem;">
+          <div style="position: absolute; inset: -8px; border-radius: 50%; background: radial-gradient(circle, rgba(235, 131, 23, 0.3) 0%, transparent 70%); animation: subtleFloat 3s infinite ease-in-out;"></div>
+          <img src="/emblem.png" alt="State Emblem of India" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 4px 14px rgba(217, 119, 6, 0.5)); animation: emblemFadeIn 0.8s ease forwards;" />
+        </div>
+        <h2 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 800; color: #FFFFFF; letter-spacing: 0.05em; margin-bottom: 0.25rem;">MINISTRY OF HOME AFFAIRS</h2>
+        <p style="font-size: 0.8rem; color: #94A3B8; margin-bottom: 1.5rem;">Secure Access Gateway • गृह मंत्रालय</p>
+        <div style="width: 100%; height: 4px; background: rgba(255, 255, 255, 0.15); border-radius: 9999px; overflow: hidden;">
+          <div style="height: 100%; width: 100%; background: linear-gradient(90deg, #EB8317 0%, #06038D 50%, #138808 100%); animation: loadingProgress 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         2. FULLSCREEN BACKGROUND (mha-bg.jpeg)
+         ==================================================================== -->
+    <div class="login-background" aria-hidden="true"></div>
+    <div class="login-bg-overlay" aria-hidden="true"></div>
+
+    <!-- ====================================================================
+         3. TOPBAR WITH ASHOKA EMBLEM AND BACK LINK
+         ==================================================================== -->
+    <header class="login-topbar">
+      <a href="index.html" class="login-topbar-brand">
+        <img src="/emblem.png" alt="State Emblem of India" class="login-topbar-emblem" />
+        <div>
+          <div class="login-topbar-title">MINISTRY OF HOME AFFAIRS</div>
+          <div class="login-topbar-subtitle">Government of India • SIH 2.0 Portal</div>
+        </div>
+      </a>
+
+      <div class="login-topbar-actions">
+        <a href="index.html" class="btn-back-home" id="btn-back-to-home">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         4. CENTRAL LOGIN STAGE WITH 2-COLUMN GLASS CARD (Reference 2)
+         ==================================================================== -->
+    <main class="login-stage">
+      <div class="login-card-wrapper" id="login-card-container">
+        
+        <!-- ================================================================
+             LEFT COLUMN: AUTHENTICATION FORM ("Welcome home")
+             ================================================================ -->
+        <div class="login-form-column">
+          <!-- Form Header -->
+          <div class="login-form-header">
+            <div class="login-house-icon">🏠</div>
+            <h1 class="login-form-title">Welcome home</h1>
+            <p class="login-form-desc">Please enter your details.</p>
+          </div>
+
+          <!-- Alert Notification Box -->
+          <div id="login-alert-box" class="login-alert" role="alert">
+            <span id="login-alert-text"></span>
+          </div>
+
+          <!-- Form -->
+          <form id="mha-login-form" novalidate>
+            <div class="login-field-group">
+              <!-- Email / User ID Input -->
+              <div class="login-input-wrapper">
+                <input
+                  type="email"
+                  id="officer-email"
+                  class="login-input"
+                  placeholder="Email"
+                  autocomplete="username"
+                  required
+                />
+                <div class="login-input-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Password Input -->
+              <div class="login-input-wrapper">
+                <input
+                  type="password"
+                  id="officer-password"
+                  class="login-input"
+                  placeholder="Password"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  type="button"
+                  id="btn-toggle-password"
+                  class="btn-toggle-password"
+                  aria-label="Toggle password visibility"
+                >
+                  <svg id="icon-eye-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                  <svg id="icon-eye" style="display: none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Remember Me & Forgot Password -->
+            <div class="login-form-options">
+              <label class="login-checkbox-label">
+                <input type="checkbox" id="remember-me" class="login-checkbox" checked />
+                <span>Remember for 30 days</span>
+              </label>
+
+              <a href="#" class="login-forgot-link" id="link-forgot-password">
+                Forgot password
+              </a>
+            </div>
+
+            <!-- Sign In Submit Button -->
+            <button type="submit" class="btn-login-submit" id="btn-submit-login">
+              <span id="submit-btn-text">Sign in</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </form>
+
+          <!-- "or" Divider -->
+          <div class="login-divider">
+            <span>or</span>
+          </div>
+
+          <!-- Social / Identity SSO Pill Buttons -->
+          <div class="login-sso-grid">
+            <!-- Apple SSO -->
+            <button type="button" class="btn-sso" id="sso-apple" title="Sign in with Apple ID" aria-label="Sign in with Apple">
+              <svg width="18" height="18" viewBox="0 0 170 170" fill="currentColor">
+                <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.69-7.85-12-14.43-6.19-9.36-10.9-19.8-14.13-31.33-3.23-11.53-4.85-22.18-4.85-31.95 0-14.13 3.69-25.96 11.06-35.49 7.37-9.52 16.5-14.38 27.4-14.58 4.79 0 10.15 1.25 16.08 3.75 5.93 2.5 9.87 3.78 11.82 3.84 1.74 0 5.86-1.39 12.37-4.16 6.51-2.77 12.08-3.97 16.71-3.6 12.39.76 22.36 5.17 29.91 13.23-10.87 6.64-16.19 15.66-15.96 27.07.22 8.92 3.64 16.48 10.27 22.68 6.63 6.2 14.52 9.77 23.67 10.7-2.61 7.83-5.87 15.65-9.78 23.47zM119.22 31.84c0-7.07 2.61-13.72 7.83-19.95 5.22-6.23 11.75-10.18 19.59-11.89.65 3.04.87 5.76.65 8.16-.65 7.18-3.48 13.84-8.49 19.97-5.01 6.13-11.43 10.02-19.26 11.67-.32-2.61-.32-5.26-.32-7.96z" />
+              </svg>
+            </button>
+
+            <!-- Google SSO -->
+            <button type="button" class="btn-sso" id="sso-google" title="Sign in with Google" aria-label="Sign in with Google">
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+              </svg>
+            </button>
+
+            <!-- Parichay / Portal ID SSO -->
+            <button type="button" class="btn-sso" id="sso-parichay" title="Sign in with Parichay Portal ID" aria-label="Sign in with Parichay">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- One-Click Demo Officer Quick Access -->
+          <div class="login-demo-bar">
+            <button type="button" class="btn-demo-officer" id="btn-quick-demo">
+              <span>⚡ One-Click Officer Demo Login</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             RIGHT COLUMN: THEMATIC PANEL (Featuring ga.jpeg & emblem.png)
+             ================================================================ -->
+        <div class="login-visual-column">
+          <!-- Background image layer with user asset ga.jpeg -->
+          <div class="login-side-image-layer" aria-hidden="true"></div>
+          <div class="login-side-overlay" aria-hidden="true"></div>
+
+          <!-- Thematic Content Overlay -->
+          <div class="login-side-content">
+            <!-- Golden State Emblem of India using emblem.png -->
+            <div class="login-emblem-glow">
+              <img src="/emblem.png" alt="State Emblem of India" class="login-side-emblem" />
+            </div>
+
+            <!-- Golden Classical Serif Typography -->
+            <div class="login-side-title-wrap">
+              <div class="login-side-title-pre">MINISTRY OF</div>
+              <div class="login-side-title-main">HOME AFFAIRS</div>
+            </div>
+
+            <div class="login-side-divider"></div>
+
+            <div class="login-side-gov">GOVERNMENT OF INDIA</div>
+            <div class="login-side-hindi">गृह मंत्रालय</div>
+
+            <!-- SIH 2.0 Badge -->
+            <div class="login-side-badge">
+              <span>★ SIH 2.0 Identity &amp; Remote-Sensing Lab</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ====================================================================
+         5. BOTTOM NAVIGATION BAR (Matching mha-bg.jpeg)
+         ==================================================================== -->
+    <footer class="login-bottom-bar">
+      <!-- Navigation Links from mha-bg.jpeg -->
+      <nav class="login-bottom-nav" aria-label="Quick Portal Navigation">
+        <a href="index.html#hero" class="login-bottom-link">HOME</a>
+        <a href="index.html#services" class="login-bottom-link">SERVICES</a>
+        <a href="index.html#news" class="login-bottom-link">NEWS</a>
+        <a href="index.html#contact" class="login-bottom-link">CONTACT</a>
+      </nav>
+
+      <!-- Helplines -->
+      <div class="login-bottom-help">
+        <span>Control Room: <strong>011-23092011</strong></span>
+        <span class="login-bottom-pill">National Emergency: 112</span>
+      </div>
+    </footer>
+
+    <!-- ====================================================================
+         6. VANILLA JAVASCRIPT AUTHENTICATION & INTERACTION CONTROLLER
+         ==================================================================== -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Initial transition loader with emblem.png
+        const loader = document.getElementById('login-initial-loader');
+        if (loader) {
+          setTimeout(() => {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            setTimeout(() => {
+              loader.style.display = 'none';
+            }, 500);
+          }, 600);
+        }
+
+        // DOM elements
+        const form = document.getElementById('mha-login-form');
+        const emailInput = document.getElementById('officer-email');
+        const passwordInput = document.getElementById('officer-password');
+        const btnTogglePassword = document.getElementById('btn-toggle-password');
+        const iconEye = document.getElementById('icon-eye');
+        const iconEyeOff = document.getElementById('icon-eye-off');
+        const alertBox = document.getElementById('login-alert-box');
+        const alertText = document.getElementById('login-alert-text');
+        const btnSubmit = document.getElementById('btn-submit-login');
+        const btnSubmitText = document.getElementById('submit-btn-text');
+        const btnQuickDemo = document.getElementById('btn-quick-demo');
+
+        // Toggle Password Visibility
+        if (btnTogglePassword && passwordInput) {
+          btnTogglePassword.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            if (iconEye && iconEyeOff) {
+              iconEye.style.display = isPassword ? 'block' : 'none';
+              iconEyeOff.style.display = isPassword ? 'none' : 'block';
+            }
+          });
+        }
+
+        // Show Alert Helper
+        function showAlert(message, type) {
+          if (!alertBox || !alertText) return;
+          alertText.textContent = message;
+          alertBox.className = `login-alert ${type}`;
+          alertBox.style.display = 'flex';
+        }
+
+        function hideAlert() {
+          if (alertBox) {
+            alertBox.style.display = 'none';
+          }
+        }
+
+        // One-Click Demo Officer Fill
+        if (btnQuickDemo) {
+          btnQuickDemo.addEventListener('click', () => {
+            if (emailInput) emailInput.value = 'officer.mha@gov.in';
+            if (passwordInput) passwordInput.value = 'MHA@2025#GovSec';
+            showAlert('Demo credentials filled: Officer ID loaded.', 'success');
+            setTimeout(() => {
+              if (form) form.requestSubmit();
+            }, 500);
+          });
+        }
+
+        // Handle Form Submission
+        if (form) {
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            hideAlert();
+
+            const email = emailInput?.value.trim();
+            const password = passwordInput?.value.trim();
+
+            if (!email || !password) {
+              showAlert('Please enter both your official email and secure password.', 'error');
+              return;
+            }
+
+            // Simulate Authentic Login Verification
+            if (btnSubmit && btnSubmitText) {
+              btnSubmit.disabled = true;
+              btnSubmitText.textContent = 'Authenticating with Parichay...';
+            }
+
+            setTimeout(() => {
+              // Store session token in sessionStorage
+              sessionStorage.setItem('mha_authenticated', 'true');
+              sessionStorage.setItem('mha_officer_email', email);
+              sessionStorage.setItem('mha_session_time', new Date().toISOString());
+
+              showAlert('Authentication successful! Accessing SIH 2.0 Security Dashboard...', 'success');
+
+              setTimeout(() => {
+                // Navigate to main portal
+                window.location.href = 'index.html?auth=success';
+              }, 1000);
+            }, 800);
+          });
+        }
+
+        // Social SSO Alerts
+        ['sso-apple', 'sso-google', 'sso-parichay'].forEach((id) => {
+          const btn = document.getElementById(id);
+          if (btn) {
+            btn.addEventListener('click', () => {
+              const name = id.replace('sso-', '').toUpperCase();
+              showAlert(`${name} Gov Single Sign-On initiated. Redirecting to token handshake...`, 'success');
+              setTimeout(() => {
+                sessionStorage.setItem('mha_authenticated', 'true');
+                sessionStorage.setItem('mha_officer_email', `officer.${name.toLowerCase()}@gov.in`);
+                window.location.href = 'index.html?auth=sso';
+              }, 900);
+            });
+          }
+        });
+
+        // Forgot Password
+        const forgotLink = document.getElementById('link-forgot-password');
+        if (forgotLink) {
+          forgotLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showAlert('Password reset token dispatched to your registered @gov.in security inbox.', 'success');
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

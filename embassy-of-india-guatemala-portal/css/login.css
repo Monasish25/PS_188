@@ -1,0 +1,698 @@
+/* ==========================================================================
+   MINISTRY OF HOME AFFAIRS - SIH 2.0 LOGIN PORTAL STYLES
+   Features:
+   - Fullscreen mha-bg.jpeg background with depth-of-field glass styling
+   - Center floating glass card with Reference 2 layout
+   - Side panel featuring ga.jpeg with golden emblem.png & serif typography
+   - Bottom navigation bar matching mha-bg.jpeg
+   ========================================================================== */
+
+:root {
+  --color-saffron: #EB8317;
+  --color-saffron-hover: #D9730D;
+  --color-primary-navy: #0F172A;
+  --color-ashoka-blue: #06038D;
+  --color-india-green: #138808;
+  --color-slate-dark: #1E293B;
+  --color-slate-muted: #64748B;
+  --color-slate-light: #94A3B8;
+  --color-border-subtle: rgba(226, 232, 240, 0.8);
+  
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Merriweather', Georgia, Cambria, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-full: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.login-page {
+  font-family: var(--font-sans);
+  color: var(--color-slate-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow-x: hidden;
+  background-color: #0B1329;
+}
+
+/* 1. Fullscreen Background using user asset mha-bg.jpeg */
+.login-background {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-image: url('/mha-bg.jpeg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(3px) brightness(0.92);
+  transform: scale(1.04);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+/* Atmospheric dark gradient overlay for contrast */
+.login-bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.35) 0%, rgba(11, 19, 41, 0.75) 100%);
+  pointer-events: none;
+}
+
+/* 2. Top Header Strip */
+.login-topbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.login-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.login-topbar-emblem {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(217, 119, 6, 0.5));
+}
+
+.login-topbar-title {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.login-topbar-subtitle {
+  font-size: 0.72rem;
+  color: #E2E8F0;
+  opacity: 0.85;
+}
+
+.login-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.15rem;
+  background: rgba(255, 255, 255, 0.88);
+  color: #0F172A;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-back-home:hover {
+  background: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+}
+
+/* 3. Main Central Login Stage */
+.login-stage {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
+
+/* 4. Central Glassmorphism Card Container (Reference 2 Layout) */
+.login-card-wrapper {
+  width: 100%;
+  max-width: 960px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 30px 70px -15px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: cardFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 5. Left Column: Authentication Form */
+.login-form-column {
+  padding: 3rem 3.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #FFFFFF;
+  border-right: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.login-form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-house-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.login-form-title {
+  font-family: var(--font-sans);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.login-form-desc {
+  font-size: 0.875rem;
+  color: var(--color-slate-muted);
+  font-weight: 400;
+}
+
+/* Alerts */
+.login-alert {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login-alert.error {
+  display: flex;
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #B91C1C;
+}
+
+.login-alert.success {
+  display: flex;
+  background: #F0FDF4;
+  border: 1px solid #86EFAC;
+  color: #15803D;
+}
+
+/* Form Fields */
+.login-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.login-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.85rem 2.75rem 0.85rem 1.15rem;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  color: #0F172A;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.login-input:focus {
+  border-color: var(--color-saffron);
+  box-shadow: 0 0 0 3px rgba(235, 131, 23, 0.18);
+}
+
+.login-input-icon {
+  position: absolute;
+  right: 1rem;
+  color: #94A3B8;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-toggle-password {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+}
+
+.btn-toggle-password:hover {
+  color: #475569;
+}
+
+/* Form Row: Remember & Forgot */
+.login-form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 0.82rem;
+}
+
+.login-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #475569;
+  cursor: pointer;
+  user-select: none;
+}
+
+.login-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-saffron);
+  cursor: pointer;
+}
+
+.login-forgot-link {
+  color: var(--color-saffron);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.login-forgot-link:hover {
+  color: var(--color-saffron-hover);
+  text-decoration: underline;
+}
+
+/* Sign In Submit Button */
+.btn-login-submit {
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--color-saffron) 0%, #D9730D 100%);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(235, 131, 23, 0.35);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-login-submit:hover {
+  background: linear-gradient(135deg, #F59E0B 0%, var(--color-saffron) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(235, 131, 23, 0.45);
+}
+
+.btn-login-submit:active {
+  transform: translateY(0);
+}
+
+/* Divider */
+.login-divider {
+  position: relative;
+  margin: 1.75rem 0 1.25rem;
+  text-align: center;
+}
+
+.login-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: #E2E8F0;
+}
+
+.login-divider span {
+  position: relative;
+  background: #FFFFFF;
+  padding: 0 0.85rem;
+  font-size: 0.75rem;
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+/* SSO Options */
+.login-sso-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-sso {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btn-sso:hover {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Demo Officer Quick Access */
+.login-demo-bar {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.btn-demo-officer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #475569;
+  background: #F1F5F9;
+  border: 1px dashed #CBD5E1;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-demo-officer:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+  border-color: #94A3B8;
+}
+
+/* 6. Right Column: Thematic Side Panel featuring ga.jpeg */
+.login-visual-column {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+  overflow: hidden;
+  background-color: #0B1329;
+}
+
+/* Background image of the side panel using ga.jpeg */
+.login-side-image-layer {
+  position: absolute;
+  inset: 0;
+  background-image: url('/ga.jpeg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease;
+}
+
+.login-card-wrapper:hover .login-side-image-layer {
+  transform: scale(1.03);
+}
+
+/* Dark atmospheric vignette to ensure golden text and emblem shine */
+.login-side-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 19, 41, 0.75) 0%, rgba(11, 19, 41, 0.45) 50%, rgba(11, 19, 41, 0.88) 100%);
+}
+
+/* Visual Content on side */
+.login-side-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 320px;
+}
+
+/* State Emblem of India container using emblem.png */
+.login-emblem-glow {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-emblem-glow::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(235, 131, 23, 0.3) 0%, transparent 70%);
+  animation: subtleFloat 3.5s ease-in-out infinite alternate;
+}
+
+.login-side-emblem {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.8)) drop-shadow(0 2px 6px rgba(235, 131, 23, 0.5));
+  animation: emblemFadeIn 0.8s ease forwards;
+}
+
+/* Golden Serif Typography for MINISTRY OF HOME AFFAIRS */
+.login-side-title-wrap {
+  margin-bottom: 1rem;
+}
+
+.login-side-title-pre {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #FFF6E5 0%, #F3CA8A 50%, #C49746 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  line-height: 1.15;
+}
+
+.login-side-title-main {
+  font-family: var(--font-serif);
+  font-size: 2.15rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #FFF6E5 0%, #F3CA8A 50%, #C49746 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9);
+  line-height: 1.1;
+  margin-top: 0.2rem;
+}
+
+.login-side-divider {
+  width: 64px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-saffron) 50%, transparent 100%);
+  margin: 0.75rem auto 1rem;
+}
+
+.login-side-gov {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F8FAFC;
+  opacity: 0.95;
+  margin-bottom: 0.25rem;
+}
+
+.login-side-hindi {
+  font-size: 0.8rem;
+  color: #E2E8F0;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.login-side-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #FFF6E5;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(8px);
+}
+
+/* 7. Bottom Navigation Bar matching mha-bg.jpeg */
+.login-bottom-bar {
+  position: relative;
+  z-index: 10;
+  padding: 1.25rem 2rem;
+  background: rgba(11, 19, 41, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.login-bottom-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.login-bottom-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E2E8F0;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  position: relative;
+}
+
+.login-bottom-link:hover {
+  color: var(--color-saffron);
+}
+
+.login-bottom-link::after {
+  content: '|';
+  position: absolute;
+  right: -0.85rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+}
+
+.login-bottom-link:last-child::after {
+  content: '';
+}
+
+.login-bottom-help {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login-bottom-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  background: rgba(235, 131, 23, 0.15);
+  border: 1px solid rgba(235, 131, 23, 0.35);
+  border-radius: var(--radius-full);
+  color: #FDBA74;
+  font-weight: 600;
+}
+
+/* 8. Responsive Design */
+@media (max-width: 860px) {
+  .login-card-wrapper {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+  
+  .login-visual-column {
+    display: none; /* Hide visual column on mobile to keep form ultra focused */
+  }
+  
+  .login-form-column {
+    padding: 2.25rem 1.75rem;
+    border-right: none;
+  }
+  
+  .login-topbar {
+    padding: 0.85rem 1.25rem;
+  }
+  
+  .login-bottom-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+}

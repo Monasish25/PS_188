@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrustID Forensic - Document &amp; Identity Screening</title>
+    <meta name="description" content="Ministry of Home Affairs, Government of India - SIH 2.0 Remote-Sensing Analysis, Identity Verification, and National Security Portal." />
+    <meta property="og:title" content="TrustID Forensic - Document &amp; Identity Screening" />
+    <meta property="og:description" content="Ministry of Home Affairs, Government of India - SIH 2.0 Remote-Sensing Analysis, Identity Verification, and National Security Portal." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Google Fonts: Inter, Merriweather, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+  </head>
+  <body data-font-size="medium">
+
+    <!-- ====================================================================
+         STEP 1: FULL-SCREEN INITIAL LOADER (1.2s Sequence)
+         ==================================================================== -->
+    <div id="initial-loader" aria-live="polite" aria-label="Loading Ministry of Home Affairs Portal">
+      <div class="loader-particles"></div>
+      <div class="loader-card">
+        <img src="/emblem.png" alt="Emblem of India" class="loader-emblem" />
+        <h1 class="loader-title">MINISTRY OF HOME AFFAIRS</h1>
+        <p class="loader-subtitle">Government of India • गृह मंत्रालय</p>
+        
+        <div class="loader-bar-track">
+          <div class="loader-bar-progress"></div>
+        </div>
+        
+        <div class="loader-footnote">
+          SECURE PROTOCOL • INITIALIZING SIH 2.0 PORTAL
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         STEP 2: SKELETON HOMEPAGE (Resembles Actual Structure with Shimmer & Emblem)
+         ==================================================================== -->
+    <div id="skeleton-screen" class="hidden" aria-hidden="true">
+      <!-- Utility Bar Skeleton -->
+      <div style="height: 32px; background: #0B1329;" class="skeleton-box"></div>
+
+      <!-- Header Skeleton with Emblem -->
+      <div class="container" style="padding: 1rem 1.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <div class="skeleton-emblem-slot" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; position: relative;">
+              <img src="/emblem.png" alt="Emblem of India" class="skeleton-emblem-badge" style="width: 46px; height: 46px; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(217,119,6,0.3));" />
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div class="skeleton-box" style="width: 180px; height: 18px;"></div>
+              <div class="skeleton-box" style="width: 120px; height: 12px;"></div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <div class="skeleton-box" style="width: 70px; height: 32px;"></div>
+            <div class="skeleton-box" style="width: 70px; height: 32px;"></div>
+            <div class="skeleton-box" style="width: 70px; height: 32px;"></div>
+            <div class="skeleton-box" style="width: 100px; height: 32px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Central Skeleton Emblem Watermark Banner -->
+      <div class="container" style="margin-top: 1rem; display: flex; justify-content: center;">
+        <div class="skeleton-emblem-centerpiece" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem 2.5rem; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(226, 232, 240, 0.9); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); text-align: center;">
+          <div style="position: relative; width: 72px; height: 72px; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center;">
+            <div style="position: absolute; inset: -8px; border-radius: 50%; background: radial-gradient(circle, rgba(235, 131, 23, 0.25) 0%, transparent 70%); animation: subtleFloat 3s infinite ease-in-out;"></div>
+            <img src="/emblem.png" alt="Lion Capital of Ashoka" class="skeleton-emblem-badge" style="width: 68px; height: 68px; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(217, 119, 6, 0.4)); animation: emblemSkeletonPulse 1.8s ease-in-out infinite alternate;" />
+          </div>
+          <div style="font-family: var(--font-serif); font-size: 0.875rem; font-weight: 700; color: #1E293B; letter-spacing: 0.05em; margin-bottom: 4px;">MINISTRY OF HOME AFFAIRS</div>
+          <div style="font-size: 0.75rem; color: #64748B; font-weight: 500;">SIH 2.0 • Preparing Secure Verification Environment...</div>
+        </div>
+      </div>
+
+      <!-- Hero Skeleton -->
+      <div class="container" style="margin-top: 2.5rem;">
+        <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem;">
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="skeleton-box" style="width: 160px; height: 24px; border-radius: 9999px;"></div>
+            <div class="skeleton-box" style="width: 90%; height: 52px;"></div>
+            <div class="skeleton-box" style="width: 75%; height: 52px;"></div>
+            <div class="skeleton-box" style="width: 95%; height: 60px;"></div>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+              <div class="skeleton-box" style="width: 150px; height: 44px; border-radius: 12px;"></div>
+              <div class="skeleton-box" style="width: 170px; height: 44px; border-radius: 12px;"></div>
+            </div>
+          </div>
+          <div class="skeleton-box" style="height: 380px; border-radius: 24px;"></div>
+        </div>
+      </div>
+
+      <!-- Vision Skeleton -->
+      <div class="container" style="margin-top: 3.5rem;">
+        <div class="skeleton-box" style="height: 140px; border-radius: 20px;"></div>
+      </div>
+
+      <!-- Services Skeleton -->
+      <div class="container" style="margin-top: 3.5rem;">
+        <div style="text-align: center; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <div class="skeleton-box" style="width: 140px; height: 20px;"></div>
+          <div class="skeleton-box" style="width: 320px; height: 36px;"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;">
+          <div class="skeleton-box" style="height: 220px; border-radius: 16px;"></div>
+          <div class="skeleton-box" style="height: 220px; border-radius: 16px;"></div>
+          <div class="skeleton-box" style="height: 220px; border-radius: 16px;"></div>
+          <div class="skeleton-box" style="height: 220px; border-radius: 16px;"></div>
+          <div class="skeleton-box" style="height: 220px; border-radius: 16px;"></div>
+        </div>
+      </div>
+
+      <!-- News Skeleton -->
+      <div class="container" style="margin-top: 3.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          <div class="skeleton-box" style="height: 260px; border-radius: 16px;"></div>
+          <div class="skeleton-box" style="height: 260px; border-radius: 16px;"></div>
+          <div class="skeleton-box" style="height: 260px; border-radius: 16px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         STEP 3: COMPLETE REVEALED HOMEPAGE (Government Layout + Glass)
+         ==================================================================== -->
+    <div id="main-content" style="display: none;">
+
+      <!-- Top Government Utility Bar -->
+      <aside class="gov-utility-bar" aria-label="Official Government Bar">
+        <div class="container gov-utility-inner">
+          <div class="gov-utility-left">
+            <!-- Indian Flag -->
+            <div class="tricolor-flag" aria-hidden="true">
+              <div class="tricolor-saffron"></div>
+              <div class="tricolor-white"></div>
+              <div class="tricolor-green"></div>
+            </div>
+            <span class="gov-utility-title">
+              भारत सरकार | Government of India • Ministry of Home Affairs
+            </span>
+          </div>
+
+          <div class="gov-utility-right">
+            <div class="utility-actions">
+              <button type="button" class="btn-font-scale" data-size="small" title="Decrease font size">A-</button>
+              <button type="button" class="btn-font-scale active" data-size="medium" title="Standard font size">A</button>
+              <button type="button" class="btn-font-scale" data-size="large" title="Increase font size">A+</button>
+            </div>
+            <div class="utility-divider"></div>
+            <a href="#contrast" id="btn-toggle-contrast" class="utility-link">High Contrast</a>
+            <div class="utility-divider"></div>
+            <a href="#lang" id="btn-toggle-lang" class="utility-link">English / हिंदी</a>
+            <div class="utility-divider"></div>
+            <button type="button" onclick="window.replayLoaderSequence()" class="utility-link" style="color: var(--color-saffron); font-weight: 600;" title="Replay loading sequence">
+              ↻ Replay Intro
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Navigation (Translucent Sticky Glass) -->
+      <header class="main-header" id="header">
+        <div class="container main-nav-inner">
+          <!-- Logo & Brand Title -->
+          <a href="index.html" class="brand-section">
+            <img src="/emblem.png" alt="Lion Capital of Ashoka Emblem" class="brand-emblem" />
+            <div class="brand-text">
+              <span class="brand-hindi">गृह मंत्रालय</span>
+              <span class="brand-title">MINISTRY OF HOME AFFAIRS</span>
+              <span class="brand-subtitle">GOVERNMENT OF INDIA</span>
+            </div>
+          </a>
+
+          <!-- Navigation Links -->
+          <nav aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li><a href="index.html" class="nav-link active">Home</a></li>
+              <li><a href="#about" class="nav-link">About Us</a></li>
+              <li><a href="#services" class="nav-link">Services</a></li>
+              <li><a href="reports.html" class="nav-link">Reports</a></li>
+              <li><a href="#news" class="nav-link">News</a></li>
+              <li>
+                <a href="remote-sensing.html" class="nav-link" style="color: var(--color-saffron); font-weight: 700;">
+                  Remote-Sensing <span class="nav-badge-sih">SIH 2.0</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Nav Right Actions -->
+          <div class="nav-actions">
+            <button type="button" class="btn-search" data-action="open-search" title="Search MHA Portal" aria-label="Search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+
+            <a href="login.html" class="btn-login" id="nav-btn-login">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Portal Login</span>
+            </a>
+
+            <button type="button" class="btn-hamburger" aria-label="Open Mobile Menu">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Section Container -->
+      <main>
+        <!-- ================================================================
+             SECTION 1: CINEMATIC GOVERNMENT HERO
+             ================================================================ -->
+        <section class="hero-section" id="hero">
+          <div class="container hero-grid">
+            
+            <!-- Hero Left Column -->
+            <div class="hero-content">
+              <div class="hero-tag">
+                <span style="display:inline-block; width:6px; height:6px; background:var(--color-saffron); border-radius:50%;"></span>
+                SAFE • SECURE • PROSPEROUS
+              </div>
+
+              <h1 class="hero-title">
+                MINISTRY OF<br />HOME AFFAIRS
+                <span>Government of India</span>
+              </h1>
+
+              <p class="hero-desc">
+                Working towards a secure, responsive, and citizen-centric India. Empowered by next-generation geospatial intelligence, AI change-detection, and remote-sensing verification.
+              </p>
+
+              <div class="hero-actions">
+                <a href="#services" class="btn-primary">
+                  <span>Explore Services</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+
+                <a href="remote-sensing.html" class="btn-sih-flagship">
+                  <span>Remote-Sensing Analysis</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                </a>
+
+                <a href="reports.html" class="btn-secondary">
+                  <span>View Reports</span>
+                </a>
+              </div>
+
+              <!-- Trust Indicator -->
+              <div class="hero-trust-indicator">
+                <div class="trust-badge-icon">✓</div>
+                <div>
+                  <strong>Trusted Government Portal</strong> • For a Safer, Stronger India
+                  <div style="font-size: 0.72rem; color: var(--color-slate-light);">SIH 2.0 Flagship Remote-Sensing Prototype</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Right Column: Architectural Glass Framing -->
+            <div class="hero-visual-frame">
+              <div class="hero-glass-card">
+                <div class="hero-image-wrapper">
+                  <!-- Raisina Hill / North Block Architectural Showcase -->
+                  <img 
+                    src="https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1200&q=80" 
+                    alt="North Block Central Secretariat - Ministry of Home Affairs" 
+                    class="hero-main-img" 
+                  />
+                  <div class="hero-img-overlay">
+                    <div class="hero-telemetry-chip">
+                      <div class="telemetry-dot"></div>
+                      <span>GEOSPATIAL SURVEILLANCE GRID • ACTIVE</span>
+                    </div>
+
+                    <div class="hero-img-caption">
+                      <h4>North Block, Raisina Hill</h4>
+                      <p>Apex Administrative Headquarters • Central Secretariat, New Delhi</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Floating Telemetry Glass Pill -->
+                <div class="floating-glass-pill">
+                  <div class="floating-pill-stat">99.98%</div>
+                  <div>
+                    <div class="floating-pill-label">National Operations Uptime</div>
+                    <div style="font-size: 0.72rem; color: #16A34A; font-weight: 600;">All 36 States/UTs Connected</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 2: VISION & KEY INITIATIVE SECTION
+             ================================================================ -->
+        <section class="section-vision" id="vision">
+          <div class="container">
+            <div class="vision-glass-container">
+              <div>
+                <div class="vision-label">OUR VISION</div>
+                <h2 class="vision-heading">Building a Safer, Stronger India</h2>
+                <p class="vision-text">
+                  The Ministry of Home Affairs is committed to modernizing internal security architecture through intelligent automated surveillance, disaster preparedness grids, and state-of-the-art remote-sensing data verification to safeguard national frontiers and urban resilience.
+                </p>
+              </div>
+
+              <!-- Key Initiative Glass Card -->
+              <a href="remote-sensing.html" class="sih-key-card" title="Open SIH 2.0 Remote-Sensing Lab">
+                <div>
+                  <div class="sih-key-header">
+                    <span class="sih-badge">KEY INITIATIVE</span>
+                    <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--color-saffron); font-weight: 700;">PROTOTYPE</span>
+                  </div>
+                  <h3 class="sih-title">SIH 2.0 Innovation Desk</h3>
+                  <p class="sih-sub">Smart | Secure | Integrated Geospatial Analysis</p>
+                </div>
+                <div class="sih-arrow">
+                  <span>Explore Remote Sensing</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 3: ABOUT MHA SECTION
+             ================================================================ -->
+        <section class="section-about" id="about">
+          <div class="container about-grid">
+            <!-- Left Info -->
+            <div>
+              <div class="section-eyebrow">ABOUT THE MINISTRY</div>
+              <h2 class="section-title">Safeguarding the Sovereign Republic</h2>
+              <p class="about-desc">
+                The Ministry of Home Affairs discharges multifaceted responsibilities vital to internal security, border management, Centre-State relations, administration of Union Territories, Central Armed Police Forces, and disaster resilience across the subcontinent.
+              </p>
+              <button type="button" class="btn-primary" id="btn-about-more">
+                <span>Learn More About Charter</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+            </div>
+
+            <!-- Right 4 Service Pillars -->
+            <div class="about-cards-col">
+              <!-- Card 1 -->
+              <div class="about-cat-card">
+                <div class="about-cat-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3 class="about-cat-title">Internal Security</h3>
+                <p class="about-cat-text">Modernizing counter-terror and intelligence coordination across interstate corridors.</p>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="about-cat-card">
+                <div class="about-cat-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"></path><polyline points="13 11 9 17 15 17 11 23"></polyline></svg>
+                </div>
+                <h3 class="about-cat-title">Disaster Management</h3>
+                <p class="about-cat-text">Rapid deployment through NDRF, early warning satellites, and mitigation frameworks.</p>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="about-cat-card">
+                <div class="about-cat-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+                </div>
+                <h3 class="about-cat-title">State Coordination</h3>
+                <p class="about-cat-text">Harmonizing inter-state councils, border demarcations, and shared policing databases.</p>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="about-cat-card">
+                <div class="about-cat-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <h3 class="about-cat-title">Citizen Welfare</h3>
+                <p class="about-cat-text">Streamlining citizenship petitions, foreigner services, and emergency redressal.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 4: KEY SERVICES (5 GLASS CARDS)
+             ================================================================ -->
+        <section class="section-services" id="services">
+          <div class="container">
+            <div class="services-header">
+              <div class="section-eyebrow">KEY SERVICES</div>
+              <h2 class="section-title">Services for a Safer Tomorrow</h2>
+              <p style="color: var(--color-slate-muted);">Integrated administrative, security, and remote-sensing verification services.</p>
+            </div>
+
+            <div class="services-grid">
+              <!-- Card 1: Citizen Services -->
+              <div class="service-glass-card">
+                <div>
+                  <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  </div>
+                  <h3 class="service-title">Citizen Services</h3>
+                  <p class="service-desc">e-FRRO foreigners registration, citizenship petitions, Arms licensing, and security clearances.</p>
+                </div>
+                <a href="services.html" class="service-link">
+                  <span>Explore Services</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+
+              <!-- Card 2: Data & Reports -->
+              <div class="service-glass-card">
+                <div>
+                  <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                  </div>
+                  <h3 class="service-title">Data &amp; Reports</h3>
+                  <p class="service-desc">National statistical crime releases, border digest metrics, and annual administrative reviews.</p>
+                </div>
+                <a href="reports.html" class="service-link">
+                  <span>View Statistics</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+
+              <!-- Card 3: Emergency Support -->
+              <div class="service-glass-card">
+                <div>
+                  <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  </div>
+                  <h3 class="service-title">Emergency Support</h3>
+                  <p class="service-desc">Central 112 nationwide emergency response system, NDRF dispatch, and cyber grievance desk.</p>
+                </div>
+                <a href="services.html" class="service-link">
+                  <span>Access Desk</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+
+              <!-- Card 4: Notifications -->
+              <div class="service-glass-card">
+                <div>
+                  <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                  </div>
+                  <h3 class="service-title">Notifications</h3>
+                  <p class="service-desc">Official Gazette publications, statutory orders, border advisories, and administrative circulars.</p>
+                </div>
+                <a href="#news" class="service-link">
+                  <span>Read Orders</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+
+              <!-- Card 5: REMOTE-SENSING ANALYSIS (SIH 2.0 MAIN HIGHLIGHT) -->
+              <div class="service-glass-card card-remote-sensing">
+                <span class="service-badge-flagship">SIH 2.0 HERO</span>
+                <div>
+                  <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                  </div>
+                  <h3 class="service-title">Remote-Sensing Analysis</h3>
+                  <p class="service-desc">Automated geospatial change-detection, satellite comparison (2024 vs 2026), and tamper verification.</p>
+                </div>
+                <a href="remote-sensing.html" class="service-link" style="color: var(--color-saffron); font-weight: 800;">
+                  <span>Launch Lab</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 5: FEATURED SIH MODULE - INTEGRATED SURVEILLANCE
+             ================================================================ -->
+        <section class="section-featured-sih" id="featured">
+          <div class="container">
+            <div class="featured-sih-banner">
+              <div>
+                <div class="featured-badge">
+                  <span style="display:inline-block; width:6px; height:6px; background:#FFAA7A; border-radius:50%;"></span>
+                  FLAGSHIP INNOVATION • SIH 2.0
+                </div>
+                <h2 class="featured-title">Integrated Security &amp; Remote-Sensing Surveillance</h2>
+                <p class="featured-desc">
+                  Leveraging high-resolution satellite imagery, bi-temporal differential matrices, and explainable AI change detection to identify unauthorized physical construction, road expansions, and border modifications in near-real-time.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                  <a href="remote-sensing.html" class="btn-sih-flagship">
+                    <span>Explore Initiative</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                  <a href="reports.html" class="btn-secondary" style="background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.25);">
+                    <span>Audit Pipeline</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Interactive Geospatial Change Preview Card -->
+              <div class="satellite-preview-card">
+                <div class="preview-header">
+                  <div class="preview-title">SECTOR-7B SATELLITE COMPARISON</div>
+                  <div class="preview-confidence">
+                    <span>✓</span> 92% CONFIDENCE
+                  </div>
+                </div>
+
+                <div class="preview-split-visual">
+                  <!-- Historical Pane -->
+                  <div class="preview-split-pane" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+                    <div class="pane-label">HISTORICAL • 2024</div>
+                    <span style="font-size: 0.7rem; color: #94a3b8; font-family: var(--font-mono);">Baseline Terrain</span>
+                  </div>
+
+                  <!-- Current Pane -->
+                  <div class="preview-split-pane" style="background: linear-gradient(135deg, #334155, #1e293b);">
+                    <div class="pane-label">CURRENT • 2026</div>
+                    <div class="pane-alert-badge">4 CHANGES DETECTED</div>
+                  </div>
+                </div>
+
+                <div style="font-size: 0.775rem; color: #CBD5E1; display: flex; justify-content: space-between; align-items: center;">
+                  <span>Target: Perimeter Border Buffer Zone</span>
+                  <a href="remote-sensing.html" style="color: #93C5FD; font-weight: 700; text-decoration: underline;">
+                    Run Interactive Verification →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 6: NEWS / UPDATES (3 GLASS COLUMNS)
+             ================================================================ -->
+        <section class="section-news" id="news">
+          <div class="container">
+            <div style="text-align: center; margin-bottom: 2.5rem;">
+              <div class="section-eyebrow">LATEST BULLETINS</div>
+              <h2 class="section-title">News, Advisories &amp; Publications</h2>
+            </div>
+
+            <div class="news-columns-grid">
+              <!-- Column 1: What's New -->
+              <div class="news-glass-col">
+                <div class="col-header">
+                  <h3 class="col-title">What's New</h3>
+                  <span style="font-size: 0.75rem; color: var(--color-saffron); font-weight: 700;">Live Feed</span>
+                </div>
+                <ul class="news-item-list">
+                  <li class="news-item">
+                    <span class="news-date">SEPTEMBER 2026</span>
+                    <a href="#news" class="news-link">MHA initiates country-wide joint mock drill on critical infrastructure cyber resilience.</a>
+                  </li>
+                  <li class="news-item">
+                    <span class="news-date">AUGUST 2026</span>
+                    <a href="#news" class="news-link">Advisory issued to coastal state maritime policing units regarding high-seas navigation alerts.</a>
+                  </li>
+                  <li class="news-item">
+                    <span class="news-date">JULY 2026</span>
+                    <a href="#news" class="news-link">Implementation progress of Smart India Hackathon (SIH 2.0) remote sensing pilot programs.</a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Column 2: News & Announcements -->
+              <div class="news-glass-col">
+                <div class="col-header">
+                  <h3 class="col-title">Announcements</h3>
+                  <span style="font-size: 0.75rem; color: var(--color-ashoka-blue); font-weight: 700;">Circulars</span>
+                </div>
+                <ul class="news-item-list">
+                  <li class="news-item">
+                    <span class="news-date">GAZETTE • NOTIFICATION 412</span>
+                    <a href="#news" class="news-link">Standard Operating Procedures for automated identity document forensic screening desks.</a>
+                  </li>
+                  <li class="news-item">
+                    <span class="news-date">NDRF ADVISORY</span>
+                    <a href="#news" class="news-link">Monsoon emergency response pre-positioning across Eastern river basins completed.</a>
+                  </li>
+                  <li class="news-item">
+                    <span class="news-date">CAPF RECRUITMENT</span>
+                    <a href="#news" class="news-link">Notification regarding digital biometric registration portal for central armed police forces.</a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Column 3: Reports & Publications -->
+              <div class="news-glass-col">
+                <div class="col-header">
+                  <h3 class="col-title">Publications</h3>
+                  <span style="font-size: 0.75rem; color: var(--status-low); font-weight: 700;">Verified PDF</span>
+                </div>
+                <ul class="news-item-list">
+                  <li class="news-item">
+                    <span class="news-date">OFFICIAL REPORT • 2026</span>
+                    <div style="font-size: 0.875rem; font-weight: 600; color: var(--color-primary-navy);">Annual Internal Security Digest</div>
+                    <button type="button" class="report-download-btn" data-report="MHA_Annual_Security_Digest_2026.pdf" data-size="4.2 MB">
+                      <span>Download Digest</span>
+                      <span style="color: var(--color-slate-muted); font-size: 0.7rem;">PDF • 4.2MB</span>
+                    </button>
+                  </li>
+                  <li class="news-item">
+                    <span class="news-date">COMPLIANCE REPORT</span>
+                    <div style="font-size: 0.875rem; font-weight: 600; color: var(--color-primary-navy);">NIST SP 800-63A Identity Assessment</div>
+                    <button type="button" class="report-download-btn" data-report="NIST_Identity_Forensics_MHA.pdf" data-size="2.8 MB">
+                      <span>Download Audit</span>
+                      <span style="color: var(--color-slate-muted); font-size: 0.7rem;">PDF • 2.8MB</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 7: USEFUL GOVERNMENT LINKS
+             ================================================================ -->
+        <section class="section-links" id="links">
+          <div class="container">
+            <div style="text-align: center; margin-bottom: 2rem;">
+              <div class="section-eyebrow">NATIONAL ECOSYSTEM</div>
+              <h2 class="section-title">Useful Government Portals</h2>
+            </div>
+
+            <div class="links-grid">
+              <a href="https://www.india.gov.in" target="_blank" rel="noopener noreferrer" class="link-glass-card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <span>National Portal of India</span>
+              </a>
+
+              <a href="https://digitalindia.gov.in" target="_blank" rel="noopener noreferrer" class="link-glass-card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>Digital India</span>
+              </a>
+
+              <a href="https://www.pmindia.gov.in" target="_blank" rel="noopener noreferrer" class="link-glass-card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span>PMO India</span>
+              </a>
+
+              <a href="https://ndma.gov.in" target="_blank" rel="noopener noreferrer" class="link-glass-card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>NDMA Authority</span>
+              </a>
+
+              <a href="https://meity.gov.in" target="_blank" rel="noopener noreferrer" class="link-glass-card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span>MeitY e-Governance</span>
+              </a>
+
+              <a href="https://isro.gov.in" target="_blank" rel="noopener noreferrer" class="link-glass-card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+                <span>ISRO / NRSC</span>
+              </a>
+            </div>
+
+            <!-- Partner Carousel -->
+            <div class="partners-carousel">
+              <div class="partner-item">
+                <div class="partner-logo-box">NIC</div>
+                <span class="partner-name">National Informatics Centre</span>
+              </div>
+              <div class="partner-item">
+                <div class="partner-logo-box">ISRO</div>
+                <span class="partner-name">National Remote Sensing Centre</span>
+              </div>
+              <div class="partner-item">
+                <div class="partner-logo-box">NDRF</div>
+                <span class="partner-name">Disaster Response Force</span>
+              </div>
+              <div class="partner-item">
+                <div class="partner-logo-box">CDAC</div>
+                <span class="partner-name">Centre for Dev. of Advanced Computing</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ================================================================
+           FOOTER (Dark Navy Government Standards)
+           ================================================================ -->
+      <footer class="main-footer">
+        <div class="container">
+          <div class="footer-grid">
+            <!-- Brand Info -->
+            <div class="footer-brand">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                <img src="/emblem_transparent.png" alt="Emblem of India" style="width: 36px; height: 36px; object-fit: contain; filter: brightness(0) invert(1);" />
+                <div>
+                  <h3 style="margin: 0; font-size: 1.15rem;">MINISTRY OF HOME AFFAIRS</h3>
+                  <div style="font-size: 0.75rem; color: var(--color-saffron); font-weight: 700;">Government of India</div>
+                </div>
+              </div>
+              <p>
+                North Block, Central Secretariat, New Delhi - 110001.<br />
+                National Citizen Support: 112 (Toll Free) • Control Room: 011-23092011
+              </p>
+            </div>
+
+            <!-- Col 1 -->
+            <div class="footer-col">
+              <h4>Quick Links</h4>
+              <ul class="footer-links">
+                <li><a href="index.html" class="footer-link">Home</a></li>
+                <li><a href="#about" class="footer-link">About the Ministry</a></li>
+                <li><a href="#services" class="footer-link">Key Services</a></li>
+                <li><a href="reports.html" class="footer-link">Reports &amp; Statistics</a></li>
+                <li><a href="remote-sensing.html" class="footer-link">Remote-Sensing Lab (SIH)</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col">
+              <h4>Support &amp; Compliance</h4>
+              <ul class="footer-links">
+                <li><a href="#contact" class="footer-link">Contact Chancery</a></li>
+                <li><a href="#accessibility" class="footer-link">Accessibility Statement</a></li>
+                <li><a href="#screen-reader" class="footer-link">Screen Reader Access</a></li>
+                <li><a href="#guidelines" class="footer-link">GIGW 3.0 Compliance</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col">
+              <h4>Legal &amp; Security</h4>
+              <ul class="footer-links">
+                <li><a href="#privacy" class="footer-link">Privacy Policy</a></li>
+                <li><a href="#terms" class="footer-link">Terms &amp; Conditions</a></li>
+                <li><a href="#copyright" class="footer-link">Copyright Statement</a></li>
+                <li><a href="#hyperlink" class="footer-link">Hyperlinking Policy</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div>
+              © 2026 Ministry of Home Affairs, Government of India. Prototype developed for Smart India Hackathon (SIH 2.0).
+            </div>
+            <div>
+              Designed with GIGW 3.0 Accessibility Standards &amp; Precision Glassmorphism
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="drawer-backdrop" class="modal-backdrop"></div>
+      <aside id="mobile-drawer" class="mobile-nav-drawer" aria-label="Mobile Navigation">
+        <div class="mobile-drawer-header">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <img src="/emblem_transparent.png" alt="Emblem" style="width: 32px; height: 32px;" />
+            <span style="font-weight: 800; font-size: 0.9rem; color: var(--color-primary-navy);">MHA PORTAL</span>
+          </div>
+          <button type="button" id="btn-close-drawer" style="font-size: 1.5rem; color: var(--color-slate-muted);">&times;</button>
+        </div>
+
+        <ul class="mobile-nav-list">
+          <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+          <li><a href="#about" class="mobile-nav-link">About the Ministry</a></li>
+          <li><a href="#services" class="mobile-nav-link">Key Services</a></li>
+          <li><a href="reports.html" class="mobile-nav-link">Reports &amp; Data</a></li>
+          <li><a href="#news" class="mobile-nav-link">News &amp; Gazette</a></li>
+          <li>
+            <a href="remote-sensing.html" class="mobile-nav-link" style="color: var(--color-saffron); font-weight: 700;">
+              <span>Remote-Sensing Lab</span>
+              <span class="nav-badge-sih">SIH 2.0</span>
+            </a>
+          </li>
+          <li>
+            <a href="login.html" class="btn-primary" style="margin-top: 1rem; width: 100%; justify-content: center;">
+              Portal Login
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Global Search Modal -->
+      <div id="search-modal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card">
+          <button type="button" id="btn-close-search" class="modal-close">&times;</button>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 800; color: var(--color-primary-navy); margin-bottom: 0.5rem;">
+            Search Official MHA Portal
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--color-slate-muted); margin-bottom: 1.5rem;">
+            Search across remote-sensing algorithms, statutory gazette notifications, advisories, and citizen services.
+          </p>
+
+          <div style="position: relative;">
+            <input 
+              type="text" 
+              id="global-search-input" 
+              placeholder="Enter keyword (e.g. Remote Sensing, NDRF, Gazette, Border)..." 
+              style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--color-slate-border); border-radius: var(--radius-md); font-size: 0.95rem; outline: none; font-family: inherit;"
+            />
+          </div>
+          <div style="margin-top: 1rem; font-size: 0.75rem; color: var(--color-slate-light);">
+            Press <kbd style="background: #F1F5F9; padding: 2px 6px; border-radius: 4px; border: 1px solid #CBD5E1;">Enter</kbd> to search.
+          </div>
+        </div>
+      </div>
+
+      <!-- About Ministry Charter Modal -->
+      <div id="about-modal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card">
+          <button type="button" id="btn-close-about" class="modal-close">&times;</button>
+          <h3 style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 800; color: var(--color-primary-navy); margin-bottom: 0.5rem;">
+            Charter of the Ministry of Home Affairs
+          </h3>
+          <div style="font-size: 0.875rem; color: var(--color-secondary-navy); line-height: 1.65; display: flex; flex-direction: column; gap: 0.75rem; max-height: 60vh; overflow-y: auto; padding-right: 0.5rem;">
+            <p>
+              Under the Government of India (Allocation of Business) Rules, 1961, the Ministry of Home Affairs is the apex federal department responsible for internal security, police forces, national borders, and disaster management.
+            </p>
+            <p>
+              <strong>Core Responsibilities:</strong>
+            </p>
+            <ul style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li>Internal Security and Counter-Terrorism architecture.</li>
+              <li>Border Management across terrestrial and maritime coastlines.</li>
+              <li>Operational command of Central Armed Police Forces (BSF, CRPF, CISF, ITBP, SSB, NSG).</li>
+              <li>Disaster management and relief coordination through NDRF &amp; NDMA.</li>
+              <li>Deployment of intelligent geospatial and remote-sensing technologies under SIH 2.0.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scripts (Loader first, then Main Interactions) -->
+    <script type="module" src="/js/loader.js"></script>
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

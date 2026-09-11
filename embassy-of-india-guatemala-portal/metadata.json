@@ -1,0 +1,6 @@
+{
+  "name": "TrustID Forensic - Document & Identity Screening Platform",
+  "description": "AI-assisted forensic identity verification platform that screens documents for tampering, performs OCR, cross-field consistency checks, face matching, and generates explainable risk assessments.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,139 @@
+/* ==========================================================================
+   MHA SIH 2.0 - Animations & Micro-Interactions
+   ========================================================================== */
+
+/* Shimmer animation for skeleton loaders */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Emblem entrance */
+@keyframes emblemFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Title upward entrance */
+@keyframes titleFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loader progress bar */
+@keyframes loadingProgress {
+  0% {
+    width: 0%;
+  }
+  40% {
+    width: 48%;
+  }
+  75% {
+    width: 82%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Glass gleam sweep */
+@keyframes glassGleam {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+/* Subtle float animation */
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Pulse badge */
+@keyframes pulseBadge {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scale(1.05);
+  }
+}
+
+/* Slow spin */
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade in with blur reduction */
+@keyframes blurReveal {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Utility Animation Classes */
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(226, 232, 240, 0.5) 0%,
+    rgba(241, 245, 249, 0.95) 50%,
+    rgba(226, 232, 240, 0.5) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite ease-in-out;
+}
+
+.animate-fade-in {
+  animation: emblemFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-up {
+  animation: titleFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: subtleFloat 5s ease-in-out infinite;
+}
+
+.animate-pulse-badge {
+  animation: pulseBadge 2.2s ease-in-out infinite;
+}
+
+.animate-blur-reveal {
+  animation: blurReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
